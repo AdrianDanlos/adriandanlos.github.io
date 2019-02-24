@@ -1,6 +1,7 @@
 //Instead of targeting the html we can target directly from JS like this:
 /*document.getElementById("mybutton").onclick = function(event) { ...
 }*/
+var styleGreen = document.createElement('styleGreen');
 var keyEl = document.getElementsByClassName("drumKey");
 var pEl = document.getElementsByTagName("p");
 var buttonEl = document.getElementById("power");
