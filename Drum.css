@@ -1,0 +1,32 @@
+body {
+    height: 100vh;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-image: url(img/background.jpg);
+    background-size: cover;
+    background-position: center;
+}
+#container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.drumKey {
+    padding: 30px;
+    border: 1px solid #2d5b3c;
+    color: #2d5b3c;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 3px;
+    flex: 0 1 50px;
+    margin: 0 5px;
+    /*min distance when shrink comes into play*/
+    text-align: center;
+    font-size: 35px;
+    outline: none;
+}
+p {
+    margin: 0;
+    user-select: none;
+    -moz-user-select: none;
+}
