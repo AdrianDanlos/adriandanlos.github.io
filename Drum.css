@@ -2,7 +2,7 @@ body {
     height: 100vh;
     max-width: 1200px;
     margin: 0 auto;
-    background-image: url(adriandanlos.github.io/images/background.jpg);
+    background-image: url("adriandanlos.github.io/images/background.jpg");
     /**/
     background-size: cover;
     background-position: center;
