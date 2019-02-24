@@ -75,10 +75,12 @@ function checkKeyPressed(e) {
 }
 
 function swapColors(i) {
-    if (keyEl[i].style.backgroundColor == "rgba(0, 103, 73, 0.4)") {
-        keyEl[i].style.backgroundColor = "rgba(10, 03, 73, 0.4)";
-    } else {
-        keyEl[i].style.backgroundColor = "rgba(0, 103, 73, 0.4)";
+    if (buttonEl.textContent.trim() == "ON") {
+        if (keyEl[i].style.backgroundColor == "rgba(0, 103, 73, 0.4)") {
+            keyEl[i].style.backgroundColor = "rgba(10, 03, 73, 0.4)";
+        } else {
+            keyEl[i].style.backgroundColor = "rgba(0, 103, 73, 0.4)";
+        }
     }
 }
 //Button POWER
@@ -98,7 +100,7 @@ var whiteButton = function() {
 };
 //function called on event
 function turnOn(e) {
-    if (buttonEl.textContent == "OFF") {
+    if (buttonEl.textContent.trim() == "OFF") {
         greenButton();
         for (i = 0; i < keyEl.length; i++) {
             keyEl[i].style.backgroundColor = "rgba(0, 103, 73, 0.4)";
