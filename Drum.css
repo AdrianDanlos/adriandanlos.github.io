@@ -14,11 +14,22 @@ body {
     position: relative;
     height: 100vh;
 }
+#top-container {
+    display: flex;
+    flex-direction: column;
+    height: 50vh;
+    justify-content: flex-end;
+    align-items: center;
+}
+#top-container img {
+    max-width: 100%;
+    margin-bottom: 10vh;
+}
 #key-container {
     display: flex;
-    align-items: flex-end;
     justify-content: space-around;
-    height: 50vh;
+    align-items: flex-end;
+    width: 100%;
 }
 .drumKey {
     padding: 30px;
@@ -38,7 +49,7 @@ p {
     user-select: none;
     -moz-user-select: none;
 }
-#features-container {
+#bottom-container {
     display: flex;
     flex-direction: column;
     height: 50vh;
@@ -60,13 +71,19 @@ p {
     -moz-user-select: none;
     margin: 10vh 0;
 }
+#volume {
+    color: white;
+    margin-bottom: 10px;
+    font-weight: 300;
+    /*visibility: hidden;*/
+}
 .slidecontainer {
     width: 100%;
 }
 .slider {
     -webkit-appearance: none;
     width: 100%;
-    height: 15px;
+    height: 10px;
     border-radius: 50px;
     background: #d3d3d3;
     outline: none;

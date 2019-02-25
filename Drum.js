@@ -4,6 +4,8 @@
 var keyEl = document.getElementsByClassName("drumKey");
 var pEl = document.getElementsByTagName("p");
 var buttonEl = document.getElementById("power");
+var volumeEl = document.getElementById("volume");
+var sliderEl = document.getElementById("myRange");
 //BACKGROUND COLOR CHANGE ONCLICK
 for (i = 0; i < keyEl.length; i++) {
     keyEl[i].addEventListener("click", colorChange(i));
@@ -120,3 +122,15 @@ function checkEnterKey(e) {
         turnOn();
     }
 }
+//VOLUME SLIDER
+sliderEl.addEventListener("input", volumeUpdate);
+
+function volumeUpdate() {
+    var val = sliderEl.value;
+    volumeEl.innerHTML = "VOLUME " + val + "%";
+}
+/*sliderEl.addEventListener("mouseover", showVolume);
+
+function volumeUpdate() {
+    volumeEl.style.visibility = 'visible';
+}*/
