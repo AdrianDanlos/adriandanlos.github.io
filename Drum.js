@@ -1,6 +1,7 @@
 //Instead of targeting the html we can target directly from JS like this:
 /*document.getElementById("mybutton").onclick = function(event) { ...
 }*/
+//No hacer todo variables globales.
 var keyEl = document.getElementsByClassName("drumKey");
 var pEl = document.getElementsByTagName("p");
 var buttonEl = document.getElementById("power");
@@ -17,7 +18,7 @@ function colorChange(i) {
     }
 }
 //BACKGROUND COLOR CHANGE + SOUND ONKEYDOWN
-var keyPressed = window.addEventListener("keydown", checkKeyPressed);
+window.addEventListener("keydown", checkKeyPressed);
 //Intentar crear un objeto en lugar de 8 variables
 var audio = new Audio("Sounds/adrian1.mp3");
 var audio1 = new Audio("Sounds/casti1.mp3");
@@ -32,48 +33,45 @@ function checkKeyPressed(e) {
     if (buttonEl.textContent == "ON") {
         switch (e.keyCode) {
             case 65:
-                audio.volume = 1;
-                audio.play();
-                audio.currentTime = 0;
+                playSound();
                 swapColors(0);
                 break;
             case 83:
-                audio1.play();
-                audio1.currentTime = 0;
+                playSound();
                 swapColors(1);
                 break;
             case 68:
-                audio2.play();
-                audio2.currentTime = 0;
+                playSound();
                 swapColors(2);
                 break;
             case 70:
-                audio3.play();
-                audio3.currentTime = 0;
+                playSound();
                 swapColors(3);
                 break;
             case 71:
-                audio4.play();
-                audio4.currentTime = 0;
+                playSound();
                 swapColors(4);
                 break;
             case 72:
-                audio5.play();
-                audio5.currentTime = 0;
+                playSound();
                 swapColors(5);
                 break;
             case 74:
-                audio6.play();
-                audio6.currentTime = 0;
+                playSound();
                 swapColors(6);
                 break;
             case 75:
-                audio7.play();
-                audio7.currentTime = 0;
+                playSound();
                 swapColors(7);
                 break;
         }
     }
+}
+
+function playSound(){
+    audio.volume = sliderEl.value * 0.01;
+    audio.play();
+    audio.currentTime = 0;
 }
 
 function swapColors(i) {

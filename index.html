@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Drum Kit</title>
+        <title>
+            Drum Kit
+        </title>
         <link href="Drum.css" rel="stylesheet" type="text/css"/>
         <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700" rel="stylesheet"/>
         <link href="https://fonts.googleapis.com/css?family=Montserrat:100,300,400" rel="stylesheet"/>
-        <script src="jquery-3.3.1.min.js">
-        </script>
     </head>
     <body>
         <div id="container">
@@ -14,41 +14,61 @@
                 <img src="images/piano3.png"/>
                 <div id="key-container">
                     <!--tabindex='1' makes the element focusable on keydown event-->
-                    <div tabindex='1' class="drumKey">
-                        <p>A</p>
+                    <div class="drumKey" tabindex="1">
+                        <p>
+                            A
+                        </p>
                     </div>
-                    <div tabindex='1' class="drumKey">
-                        <p>S</p>
+                    <div class="drumKey" tabindex="1">
+                        <p>
+                            S
+                        </p>
                     </div>
-                    <div tabindex='1' class="drumKey">
-                        <p>D</p>
+                    <div class="drumKey" tabindex="1">
+                        <p>
+                            D
+                        </p>
                     </div>
-                    <div tabindex='1' class="drumKey">
-                        <p>F</p>
+                    <div class="drumKey" tabindex="1">
+                        <p>
+                            F
+                        </p>
                     </div>
-                    <div tabindex='1' class="drumKey">
-                        <p>G</p>
+                    <div class="drumKey" tabindex="1">
+                        <p>
+                            G
+                        </p>
                     </div>
-                    <div tabindex='1' class="drumKey">
-                        <p>H</p>
+                    <div class="drumKey" tabindex="1">
+                        <p>
+                            H
+                        </p>
                     </div>
-                    <div tabindex='1' class="drumKey">
-                        <p>J</p>
+                    <div class="drumKey" tabindex="1">
+                        <p>
+                            J
+                        </p>
                     </div>
-                    <div tabindex='1' class="drumKey">
-                        <p>K</p>
+                    <div class="drumKey" tabindex="1">
+                        <p>
+                            K
+                        </p>
                     </div>
                 </div>
             </div>
             <div id="bottom-container">
                 <div id="power">
-                    <p>OFF</p>
+                    <p>
+                        OFF
+                    </p>
                 </div>
                 <div id="volume">
-                    <p>VOLUME 50%</p>
+                    <p>
+                        VOLUME 50%
+                    </p>
                 </div>
                 <div class="slidecontainer">
-                    <input type="range" min="0" max="100" value="50" class="slider" id="myRange"/>
+                    <input class="slider" id="myRange" max="100" min="0" type="range" value="50"/>
                 </div>
             </div>
         </div>
