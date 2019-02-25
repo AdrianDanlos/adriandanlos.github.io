@@ -3,7 +3,7 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     /*background-image: url("adriandanlos.github.io/images/background.jpg");*/
-    background-image: url("images/background.jpg");
+    background-image: url("images/background4.png");
     background-size: cover;
     background-position: center;
     font-family: Montserrat, arial;
@@ -22,7 +22,7 @@ body {
     align-items: center;
 }
 #top-container img {
-    max-width: 100%;
+    max-width: 90%;
     margin-bottom: 10vh;
 }
 #key-container {
@@ -74,11 +74,19 @@ p {
 #volume {
     color: white;
     margin-bottom: 10px;
-    font-weight: 300;
-    /*visibility: hidden;*/
+    font-weight: 400;
+    visibility: hidden;
 }
 .slidecontainer {
-    width: 100%;
+    display: flex;
+    width: 90%;
+    align-items: center;
+}
+.slidecontainer img {
+    max-width: 2%;
+    margin: 0 10px;
+    user-select: none;
+    -moz-user-select: none;
 }
 .slider {
     -webkit-appearance: none;
