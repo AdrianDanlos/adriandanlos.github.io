@@ -13,6 +13,14 @@ var audio4 = new Audio("Sounds/sol.wav");
 var audio5 = new Audio("Sounds/la.wav");
 var audio6 = new Audio("Sounds/si.mp3");
 var audio7 = new Audio("Sounds/do2.wav");
+var lastEvent65;
+var lastEvent83;
+var lastEvent68;
+var lastEvent70;
+var lastEvent71;
+var lastEvent72;
+var lastEvent74;
+var lastEvent75;
 var down = window.addEventListener("keydown", checkKeyPressed);
 var up = window.addEventListener("keyup", checkKeyPressed)
 
@@ -20,27 +28,59 @@ function checkKeyPressed(e) {
     if (buttonEl.textContent.trim() == "ON") {
         switch (e.keyCode) {
             case 65:
+                if (e.type == "keydown" && lastEvent65 == "keydown") {
+                    break;
+                }
+                lastEvent65 = e.type;
                 keyActions(e, audio, 0);
                 break;
             case 83:
+                if (e.type == "keydown" && lastEvent83 == "keydown") {
+                    break;
+                }
+                lastEvent83 = e.type;
                 keyActions(e, audio1, 1);
                 break;
             case 68:
+                if (e.type == "keydown" && lastEvent68 == "keydown") {
+                    break;
+                }
+                lastEvent68 = e.type;
                 keyActions(e, audio2, 2);
                 break;
             case 70:
+                if (e.type == "keydown" && lastEvent70 == "keydown") {
+                    break;
+                }
+                lastEvent70 = e.type;
                 keyActions(e, audio3, 3);
                 break;
             case 71:
+                if (e.type == "keydown" && lastEvent71 == "keydown") {
+                    break;
+                }
+                lastEvent71 = e.type;
                 keyActions(e, audio4, 4);
                 break;
             case 72:
+                if (e.type == "keydown" && lastEvent72 == "keydown") {
+                    break;
+                }
+                lastEvent72 = e.type;
                 keyActions(e, audio5, 5);
                 break;
             case 74:
+                if (e.type == "keydown" && lastEvent74 == "keydown") {
+                    break;
+                }
+                lastEvent74 = e.type;
                 keyActions(e, audio6, 6);
                 break;
             case 75:
+                if (e.type == "keydown" && lastEvent75 == "keydown") {
+                    break;
+                }
+                lastEvent75 = e.type;
                 keyActions(e, audio7, 7);
                 break;
         }
@@ -48,6 +88,7 @@ function checkKeyPressed(e) {
 }
 
 function keyActions(e, audio, i) {
+    lastKey = e.keyCode;
     if (e.type === "keydown") {
         playSound(audio);
         swapToBlue(i);
