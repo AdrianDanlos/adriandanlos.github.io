@@ -1,0 +1,35 @@
+body, html {
+    margin: 0;
+    padding: 0;
+}
+body {
+    display: flex;
+    align-items: center;
+    background-image: url("img/fondo3.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    font-family: Roboto;
+    color: white;
+    user-select: none;
+    -moz-user-select: none;
+}
+p {
+    margin: 0;
+}
+#timer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background-color: rgba(50, 50, 25, 0.4);
+    padding: 10px 0;
+    /*box-shadow: 1px 3px 10px 1px white;*/
+}
+.number {}
+.dots, .number {
+    font-size: 120px;
+}
+.column {
+    text-align: center;
+    margin: 0 25px;
+}
