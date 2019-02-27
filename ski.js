@@ -3,8 +3,8 @@ var hoursEl = document.getElementById("hours");
 var minutesEl = document.getElementById("minutes");
 var secondsEl = document.getElementById("seconds");
 setInterval(function() {
-    /*let dateFinal = new Date(2019, 2, 1, 19, 0, 0, 0);*/
-    let dateFinal = new Date(2019, 1, 27, 11, 0, 0, 0);
+    let dateFinal = new Date(2019, 2, 1, 19, 0, 0, 0);
+    /*let dateFinal = new Date(2019, 1, 27, 11, 0, 0, 0);*/
     console.log(dateFinal);
     let dateNow = new Date();
     let diffMilliS = dateFinal - dateNow;
