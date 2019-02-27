@@ -9,7 +9,7 @@ body {
     background-size: cover;
     background-position: center;
     height: 100vh;
-    font-family: Roboto;
+    font-family: Roboto, arial;
     color: white;
     user-select: none;
     -moz-user-select: none;
