@@ -1,21 +1,31 @@
 body, html {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
     margin: 0;
     padding: 0;
-}
-body {
-    display: flex;
-    align-items: center;
-    background-image: url("img/fondo3.jpg");
+    background-image: url("img/s3.jpg");
     background-size: cover;
     background-position: center;
     height: 100vh;
     font-family: Roboto, arial;
     color: white;
+    font-size: 80px;
+    font-weight: 100;
+}
+main {
+    display: flex;
+    align-items: center;
     user-select: none;
     -moz-user-select: none;
 }
-p {
+h1, p {
     margin: 0;
+}
+h1 {
+    align-self: center;
+    font-size: 80px;
+    font-weight: 100;
 }
 #timer {
     display: flex;
@@ -25,7 +35,9 @@ p {
     padding: 10px 0;
     /*box-shadow: 1px 3px 10px 1px white;*/
 }
-.number {}
+.text {
+    font-size: 40px;
+}
 .dots, .number {
     font-size: 120px;
 }
