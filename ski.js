@@ -4,7 +4,12 @@ var minutesEl = document.getElementById("minutes");
 var secondsEl = document.getElementById("seconds");
 var titleEl = document.getElementById("title");
 var audio = new Audio('audio/yeu.mp3');
-audio.play();
+const playPromise = audio.play();
+if (playPromise !== null) {
+    playPromise.catch(() => {
+        audio.play();
+    })
+}
 setInterval(function() {
     console.log($("#rocket").position().top);
     let dateFinal = new Date(2019, 7, 3, 0, 0, 0, 0); /*El mes a indicar es 1 mes anterior a la fecha final. Si queremos Agosto indicamos 7 BUG a resolver*/
