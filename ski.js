@@ -2,12 +2,13 @@ var daysEl = document.getElementById("days");
 var hoursEl = document.getElementById("hours");
 var minutesEl = document.getElementById("minutes");
 var secondsEl = document.getElementById("seconds");
+var titleEl = document.getElementById("title");
 var audio = new Audio('audio/yeu.mp3');
 audio.play();
 setInterval(function() {
+    console.log($("#rocket").position().top);
     let dateFinal = new Date(2019, 7, 3, 0, 0, 0, 0); /*El mes a indicar es 1 mes anterior a la fecha final. Si queremos Agosto indicamos 7 BUG a resolver*/
     if (new Date() > dateFinal) {
-        console.log("hola")
         countDownOver(daysEl, 0);
         countDownOver(hoursEl, 0);
         countDownOver(minutesEl, 0);
@@ -40,6 +41,18 @@ setInterval(function() {
 
 function countDownOver(timeEl, time) {
     timeEl.innerHTML = 0 + time;
+    titleEl.innerHTML = "IN CHINA";
+    $("#rocket").css('visibility', 'visible');
+    setInterval(function() {
+        height = $("#rocket").position().top, screenHeight = $(window).height(), duration = 3000;
+
+        function animatePlane() {
+            $("#rocket").css("bottom", +height).animate({
+                "bottom": screenHeight
+            }, duration, animatePlane);
+        }
+        animatePlane();
+    });
 }
 console.log(days);
 console.log(hours);

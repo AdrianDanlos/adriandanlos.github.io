@@ -12,6 +12,7 @@ body, html {
     color: white;
     font-size: 80px;
     font-weight: 100;
+    overflow: hidden;
 }
 main {
     display: flex;
@@ -44,4 +45,15 @@ h1 {
 .column {
     text-align: center;
     margin: 0 25px;
+}
+#rocket {
+    position: absolute;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    width: 300px;
+    visibility: hidden;
+}
+#rocket img {
+    width: 100%;
 }
