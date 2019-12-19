@@ -73,3 +73,19 @@ section{
 .text, .decorator{
     display: inline-block;
 }
+
+@media only screen and (max-width: 700px) {
+    .container{
+        flex-direction: column;
+        height: 100vh;
+    }
+    section{
+        justify-content: center;
+    }
+    .title{
+        font-size: 40px;
+    }
+    .data{
+        font-size: 70px;
+    }
+}
