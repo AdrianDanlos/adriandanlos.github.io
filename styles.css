@@ -8,7 +8,6 @@ body,html{
     font-family: Roboto, serif;
     text-align: center;
     color: #333234;
-    overflow: hidden;
 }
 html{
     background-image:url("http://hdqwalls.com/wallpapers/apex-legends-season-3-ws.jpg");
@@ -37,6 +36,7 @@ section{
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
 .title, .data{
