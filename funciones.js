@@ -17,9 +17,20 @@ $( document ).ready(function() {
             dataType: 'json',
             success: function(result){
                 let datosTotales = sumarDatos(result);
-                visualizarDatos(datosTotales, "N3Essential(ALL)");
+                let datosRanking = getRanking(result);
+                visualizarDatos(datosTotales, datosRanking, "N3Essential(ALL)");
+                console.log(result);
             }
         });
+    }
+
+    function getRanking(result){
+        let rankName = result[0]['global']['rank']['rankName'];
+        let rankScore = result[0]['global']['rank']['rankScore'];
+        let rankDiv = result[0]['global']['rank']['rankDiv'];
+        let rankImg = result[0]['global']['rank']['rankImg'];
+
+        return [rankName, rankDiv, rankScore, rankImg];
     }
 
     function sumarDatos(result){
@@ -39,16 +50,34 @@ $( document ).ready(function() {
         return datosTotales;
     }
 
-    function visualizarDatos(datosTotales, user) {
+    function visualizarDatos(datosTotales, datosRanking, user) {
         //Date
         let d = new Date();
         $('#refresh-time').html("Last refresh: " + d.getHours() + ' : ' + d.getMinutes() + ' : ' + d.getSeconds() + '  GMT+1');
         //User
-        $('#user-info').html("User: " + user);
+        $('#user-info').html(user);
         //Data
         let dataContainers = $('.data');
         for (let i = 0; i < dataContainers.length; i++) {
             dataContainers[i].innerHTML = datosTotales[Object.keys(datosTotales)[i]];
+        }
+        //Ranking
+
+
+        $('#rank').html(datosRanking[0] + " " + romanize(datosRanking[1]) + " " + datosRanking[2]);
+        $('.rank-logo').attr('src', datosRanking[3]);
+    }
+
+    function romanize(number) {
+        switch (number) {
+            case 1: return 'I';
+                break;
+            case 2: return 'II';
+                break;
+            case 3: return 'III';
+                break;
+            case 4: return 'IV';
+                break;
         }
     }
 
