@@ -20,6 +20,9 @@ body{
     width: 80vw;
     margin:0 auto;
 }
+a{
+    text-decoration: none;
+}
 .container{
     display: flex;
     justify-content: space-around;
@@ -28,7 +31,7 @@ body{
 }
 
 .container section{
-    flex-basis: 400px;
+    width: 20vw;
     height: 400px;
 }
 
@@ -48,11 +51,11 @@ section{
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 80px;
+    font-size: 4vw;
 }
 
 .data{
-    font-size: 120px;
+    font-size: 5vw;
 }
 
 #legend{
@@ -88,12 +91,15 @@ footer{
     bottom:10px;
     right:20px;
     height: 40px;
-    text-decoration: none;
 }
 #refresh-time{
     margin-right: 50px;
  }
 @media only screen and (max-width: 700px) {
+    body{
+        font-size: 12px;
+        overflow: hidden;
+    }
     .container{
         flex-direction: column;
         height: 100vh;
@@ -101,10 +107,14 @@ footer{
     section{
         justify-content: center;
     }
-    .title{
-        font-size: 40px;
+    footer, #legend{
+        justify-content: center;
+        width: 100%;
     }
-    .data{
-        font-size: 70px;
+    #kills{
+        justify-content: flex-end;
+    }
+    #top3{
+        justify-content: flex-start;
     }
 }
