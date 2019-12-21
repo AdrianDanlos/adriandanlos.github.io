@@ -16,6 +16,7 @@ $( document ).ready(function() {
             contentType: "application/json",
             dataType: 'json',
             success: function(result){
+                $('#loading-logo').remove();
                 let datosTotales = sumarDatos(result);
                 let datosRanking = getRanking(result);
                 visualizarDatos(datosTotales, datosRanking, "N3Essential(ALL)");

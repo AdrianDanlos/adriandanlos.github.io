@@ -97,6 +97,21 @@ footer{
 #refresh-time{
     padding-right: 50px;
  }
+#loading-logo{
+    margin-left: -40px;
+}
+/*loading animation*/
+
+@keyframes loading {
+    to {
+        transform: rotate(360deg);
+    }
+}
+#loading-logo {
+    animation: loading 1s infinite;
+}
+
+/*Media Queries*/
 @media only screen and (max-width: 700px) {
     body{
         width: 100%;
@@ -124,5 +139,11 @@ footer{
     }
     .rank-logo{
         margin-right: 0;
+    }
+    .title{
+        padding-top: 10px;
+    }
+    .data{
+        padding-bottom: 10px;
     }
 }
