@@ -100,8 +100,15 @@ footer{
 #loading-logo{
     margin-left: -40px;
 }
-/*loading animation*/
 
+#online-logo{
+    width: 20px;
+    height: auto;
+    margin-right: 5px;
+}
+
+
+/*loading animation*/
 @keyframes loading {
     to {
         transform: rotate(360deg);

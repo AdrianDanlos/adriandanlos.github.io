@@ -19,7 +19,8 @@ $( document ).ready(function() {
                 $('#loading-logo').remove();
                 let datosTotales = sumarDatos(result);
                 let datosRanking = getRanking(result);
-                visualizarDatos(datosTotales, datosRanking, "N3Essential(ALL)");
+                let online = isOnline(result);
+                visualizarDatos(datosTotales, datosRanking, online, "N3Essential");
                 console.log(result);
             }
         });
@@ -51,7 +52,7 @@ $( document ).ready(function() {
         return datosTotales;
     }
 
-    function visualizarDatos(datosTotales, datosRanking, user) {
+    function visualizarDatos(datosTotales, datosRanking, online, user) {
         //Date
         createDateNode();
         //User
@@ -64,6 +65,13 @@ $( document ).ready(function() {
         //Ranking
         $('#rank').html(datosRanking[0] + " " + romanize(datosRanking[1]) + " " + datosRanking[2]);
         $('.rank-logo').attr('src', datosRanking[3]);
+        //Online status up
+        if(online){
+            $('#online-logo').attr('src', 'img/online.png');
+        }
+        else{
+            $('#online-logo').attr('src', 'img/offline.png');
+        }
     }
 
     function romanize(number) {
@@ -87,6 +95,16 @@ $( document ).ready(function() {
             refreshTime = $('#refresh-time');
         }
         refreshTime.html("Last refresh: " + d.getHours() + ' : ' + d.getMinutes() + ' : ' + d.getSeconds() + '  GMT+1');
+    }
+
+    function isOnline(result) {
+        let online = false;
+        result.forEach((item, index) => {
+            if(result[index]['realtime']['isOnline'] === 1){
+                online = true;
+            }
+        });
+        return online;
     }
 
 });
