@@ -29,12 +29,12 @@ a{
     align-items: center;
     height: 100%;
     max-width: 1400px;
+    margin:0 auto;
 }
 
 .container section{
     width: 20vw;
     height: 400px;
-    margin:0 auto;
 }
 
 section{
