@@ -80,9 +80,12 @@ $( document ).ready(function() {
 
     function createDateNode() {
         let d = new Date();
-        let apiLink = $('#api-link');
-        apiLink.prepend('<span id="refresh-time"></span>');
-        $('#refresh-time').html("Last refresh: " + d.getHours() + ' : ' + d.getMinutes() + ' : ' + d.getSeconds() + '  GMT+1');
+        let refreshTime = $('#refresh-time');
+        if(!refreshTime.length){
+            $('footer').prepend('<span id="refresh-time"></span>');
+            refreshTime = $('#refresh-time');
+        }
+        refreshTime.html("Last refresh: " + d.getHours() + ' : ' + d.getMinutes() + ' : ' + d.getSeconds() + '  GMT+1');
     }
 
 });
