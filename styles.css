@@ -105,6 +105,7 @@ footer{
     .container{
         flex-direction: column;
         height: 100vh;
+        margin:0 auto;
     }
     section{
         justify-content: center;
