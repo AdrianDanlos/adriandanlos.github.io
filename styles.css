@@ -28,6 +28,7 @@ a{
     justify-content: space-around;
     align-items: center;
     height: 100%;
+    max-width: 1400px;
 }
 
 .container section{
@@ -93,10 +94,11 @@ footer{
     height: 40px;
 }
 #refresh-time{
-    margin-right: 50px;
+    padding-right: 50px;
  }
 @media only screen and (max-width: 700px) {
     body{
+        width: 100%;
         font-size: 12px;
         overflow: hidden;
     }
@@ -110,11 +112,16 @@ footer{
     footer, #legend{
         justify-content: center;
         width: 100%;
+        right: 0;
+        left:0;
     }
     #kills{
         justify-content: flex-end;
     }
     #top3{
         justify-content: flex-start;
+    }
+    .rank-logo{
+        margin-right: 0;
     }
 }

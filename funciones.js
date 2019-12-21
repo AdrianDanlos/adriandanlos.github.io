@@ -52,8 +52,7 @@ $( document ).ready(function() {
 
     function visualizarDatos(datosTotales, datosRanking, user) {
         //Date
-        let d = new Date();
-        $('#refresh-time').html("Last refresh: " + d.getHours() + ' : ' + d.getMinutes() + ' : ' + d.getSeconds() + '  GMT+1');
+        createDateNode();
         //User
         $('#user-info').html(user);
         //Data
@@ -62,8 +61,6 @@ $( document ).ready(function() {
             dataContainers[i].innerHTML = datosTotales[Object.keys(datosTotales)[i]];
         }
         //Ranking
-
-
         $('#rank').html(datosRanking[0] + " " + romanize(datosRanking[1]) + " " + datosRanking[2]);
         $('.rank-logo').attr('src', datosRanking[3]);
     }
@@ -79,6 +76,13 @@ $( document ).ready(function() {
             case 4: return 'IV';
                 break;
         }
+    }
+
+    function createDateNode() {
+        let d = new Date();
+        let apiLink = $('#api-link');
+        apiLink.prepend('<span id="refresh-time"></span>');
+        $('#refresh-time').html("Last refresh: " + d.getHours() + ' : ' + d.getMinutes() + ' : ' + d.getSeconds() + '  GMT+1');
     }
 
 });
