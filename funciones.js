@@ -17,20 +17,31 @@ $( document ).ready(function() {
             dataType: 'json',
             success: function(result){
                 $('#loading-logo').remove();
-                let datosTotales = sumarDatos(result);
-                let datosRanking = getRanking(result);
                 let online = isOnline(result);
+                let datosRanking = getRanking(result);
+                let datosTotales = sumarDatos(result);
                 visualizarDatos(datosTotales, datosRanking, online, "N3Essential");
                 console.log(result);
             }
         });
     }
 
+    function isOnline(result) {
+        let online = false;
+        result.forEach((item, index) => {
+            if(result[index]['realtime']['isOnline'] === 1){
+                online = true;
+            }
+        });
+        return online;
+    }
+
     function getRanking(result){
-        let rankName = result[0]['global']['rank']['rankName'];
-        let rankScore = result[0]['global']['rank']['rankScore'];
-        let rankDiv = result[0]['global']['rank']['rankDiv'];
-        let rankImg = result[0]['global']['rank']['rankImg'];
+        let rankObject = result[0]['global']['rank'];
+        let rankName = rankObject['rankName'];
+        let rankScore = rankObject['rankScore'];
+        let rankDiv = rankObject['rankDiv'];
+        let rankImg = rankObject['rankImg'];
 
         return [rankName, rankDiv, rankScore, rankImg];
     }
@@ -41,12 +52,27 @@ $( document ).ready(function() {
             "wins": 0,
             "top3": 0
         };
-        result.forEach((item, index) => {
-            datosTotales.kills += result[index]['legends']['selected']['Pathfinder']['kills'];
-            datosTotales.wins += result[index]['legends']['selected']['Pathfinder']['wins_season_3'];
-            //Excepcion para el top3 por no tener activado el banner en apex
-            if(("top_3" in result[index]['legends']['selected']['Pathfinder'])){
-                datosTotales.top3 += result[index]['legends']['selected']['Pathfinder']['top_3'];
+        //get stats from selected legend
+        result.forEach((item, i) => {
+            let selectedLegend = result[i]['legends']['selected'];
+            datosTotales.kills += Object.values(selectedLegend)[0]['kills'];
+            datosTotales.wins += Object.values(selectedLegend)[0]['wins_season_3'];
+            datosTotales.top3 += Object.values(selectedLegend)[0]['top_3'];
+        });
+
+        //get stats from all legends except the selected one to avoid duplicated data
+        result.forEach((item, i)=>{ //iterate trough accounts
+            let selectedLegendKey = Object.keys(result[i]['legends']['selected'])[0]; //legend selected in this account
+            let allLegendsArray = result[i]['legends']['all']; //all legends array
+            if(allLegendsArray){ //if the api gets 'all legends' object
+                Object.keys(allLegendsArray).forEach((key, x)=> { //iterate through 'all' legends
+                    if(selectedLegendKey !== Object.keys(allLegendsArray)[x]){ //we keep adding data except if the legend found in 'all legends' section is the selected one.
+                        datosTotales.kills += parseInt(Object.values(allLegendsArray)[x]['kills'], 10);
+                        if(Object.values(allLegendsArray)[x]['wins_season_3']){ //if finds wins_season_3
+                            datosTotales.wins += parseInt(Object.values(allLegendsArray)[x]['wins_season_3'], 10);
+                        }
+                    }
+                });
             }
         });
         return datosTotales;
@@ -96,17 +122,6 @@ $( document ).ready(function() {
         }
         refreshTime.html("Last refresh: " + d.getHours() + ' : ' + d.getMinutes() + ' : ' + d.getSeconds() + '  GMT+1');
     }
-
-    function isOnline(result) {
-        let online = false;
-        result.forEach((item, index) => {
-            if(result[index]['realtime']['isOnline'] === 1){
-                online = true;
-            }
-        });
-        return online;
-    }
-
 });
 
 
