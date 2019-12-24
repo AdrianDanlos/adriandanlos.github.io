@@ -54,10 +54,20 @@ $( document ).ready(function() {
         };
         //get stats from selected legend
         result.forEach((item, i) => {
-            let selectedLegend = result[i]['legends']['selected'];
-            datosTotales.kills += Object.values(selectedLegend)[0]['kills'];
-            datosTotales.wins += Object.values(selectedLegend)[0]['wins_season_3'];
-            datosTotales.top3 += Object.values(selectedLegend)[0]['top_3'];
+            const selectedLegend = Object.values(result[i]['legends']['selected'])[0]; //constante dado que nunca le vamos a asignar otro valor durante la iteración actual. La volvemos a declarar en cada iteración.
+
+            datosTotales.kills += selectedLegend['kills'] || 0;
+            datosTotales.wins += selectedLegend['wins_season_3'] || 0;
+            datosTotales.top3 += selectedLegend['top_3'] || 0;
+            console.log('--------------SELECTED LEGEND-------------');
+            console.log('Account number: ' + i);
+            console.log('Selected legend: ' + Object.keys(result[i]['legends']['selected'])[0]);
+            console.log('Kills: ' + selectedLegend['kills']);
+            console.log('Wins: ' + selectedLegend['wins_season_3']);
+            console.log('Top3: ' + selectedLegend['top_3']);
+            console.log('Total Kills: ' + datosTotales.kills);
+            console.log('Total wins: ' + datosTotales.wins);
+            console.log('Total top3: ' + datosTotales.top3);
         });
 
         //get stats from all legends except the selected one to avoid duplicated data
@@ -65,12 +75,16 @@ $( document ).ready(function() {
             let selectedLegendKey = Object.keys(result[i]['legends']['selected'])[0]; //legend selected in this account
             let allLegendsArray = result[i]['legends']['all']; //all legends array
             if(allLegendsArray){ //if the api gets 'all legends' object
+                console.log('-------------ALL LEGENDS--------------');
+                console.log('Account number: ' + i);
                 Object.keys(allLegendsArray).forEach((key, x)=> { //iterate through 'all' legends
                     if(selectedLegendKey !== Object.keys(allLegendsArray)[x]){ //we keep adding data except if the legend found in 'all legends' section is the selected one.
-                        datosTotales.kills += parseInt(Object.values(allLegendsArray)[x]['kills'], 10);
-                        if(Object.values(allLegendsArray)[x]['wins_season_3']){ //if finds wins_season_3
-                            datosTotales.wins += parseInt(Object.values(allLegendsArray)[x]['wins_season_3'], 10);
-                        }
+                        let iteratingLegend = Object.values(allLegendsArray)[x]; //the legend we are iterating trhough
+                        datosTotales.kills += parseInt(iteratingLegend['kills'], 10);
+                        console.log('current legend in iteration: ' + Object.keys(allLegendsArray)[x]);
+                        console.log('kills: ' + iteratingLegend['kills']);
+                        console.log('Total Kills: ' + datosTotales.kills);
+                        datosTotales.wins += parseInt(iteratingLegend['wins_season_3'], 10) || 0;
                     }
                 });
             }
@@ -120,8 +134,6 @@ $( document ).ready(function() {
             $('footer').prepend('<span id="refresh-time"></span>');
             refreshTime = $('#refresh-time');
         }
-        refreshTime.html("Last refresh: " + d.getHours() + ' : ' + d.getMinutes() + ' : ' + d.getSeconds() + '  GMT+1');
+        refreshTime.html("Last refresh: " + (d.getHours()<10?'0':'') + d.getHours() + ' : ' + (d.getMinutes()<10?'0':'') + d.getMinutes() + ' : ' + (d.getSeconds()<10?'0':'') + d.getSeconds() + '  GMT+1');
     }
 });
-
-
