@@ -59,7 +59,7 @@ $( document ).ready(function() {
             datosTotales.kills += selectedLegend['kills'] || 0;
             datosTotales.wins += selectedLegend['wins_season_3'] || 0;
             datosTotales.top3 += selectedLegend['top_3'] || 0;
-            console.log('--------------SELECTED LEGEND-------------');
+            /*console.log('--------------SELECTED LEGEND-------------');
             console.log('Account number: ' + i);
             console.log('Selected legend: ' + Object.keys(result[i]['legends']['selected'])[0]);
             console.log('Kills: ' + selectedLegend['kills']);
@@ -67,7 +67,7 @@ $( document ).ready(function() {
             console.log('Top3: ' + selectedLegend['top_3']);
             console.log('Total Kills: ' + datosTotales.kills);
             console.log('Total wins: ' + datosTotales.wins);
-            console.log('Total top3: ' + datosTotales.top3);
+            console.log('Total top3: ' + datosTotales.top3);*/
         });
 
         //get stats from all legends except the selected one to avoid duplicated data
@@ -75,17 +75,17 @@ $( document ).ready(function() {
             let selectedLegendKey = Object.keys(result[i]['legends']['selected'])[0]; //legend selected in this account
             let allLegendsArray = result[i]['legends']['all']; //all legends array
             if(allLegendsArray){ //if the api gets 'all legends' object
-                console.log('-------------ALL LEGENDS--------------');
-                console.log('Account number: ' + i);
+                /*console.log('-------------ALL LEGENDS--------------');
+                console.log('Account number: ' + i);*/
                 Object.keys(allLegendsArray).forEach((key, x)=> { //iterate through 'all' legends
                     if(selectedLegendKey !== Object.keys(allLegendsArray)[x]){ //we keep adding data except if the legend found in 'all legends' section is the selected one.
                         let iteratingLegend = Object.values(allLegendsArray)[x]; //the legend we are iterating trhough
                         datosTotales.kills += parseInt(iteratingLegend['kills'], 10);
-                        console.log('current legend in iteration: ' + Object.keys(allLegendsArray)[x]);
-                        console.log('kills: ' + iteratingLegend['kills']);
-                        console.log('Total Kills: ' + datosTotales.kills);
                         datosTotales.wins += parseInt(iteratingLegend['wins_season_3'], 10) || 0;
                         datosTotales.top3 += parseInt(iteratingLegend['top_3'], 10) || 0;
+                        /*console.log('current legend in iteration: ' + Object.keys(allLegendsArray)[x]);
+                        console.log('kills: ' + iteratingLegend['kills']);
+                        console.log('Total Kills: ' + datosTotales.kills);*/
                     }
                 });
             }
