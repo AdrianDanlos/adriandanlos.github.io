@@ -85,6 +85,7 @@ $( document ).ready(function() {
                         console.log('kills: ' + iteratingLegend['kills']);
                         console.log('Total Kills: ' + datosTotales.kills);
                         datosTotales.wins += parseInt(iteratingLegend['wins_season_3'], 10) || 0;
+                        datosTotales.top3 += parseInt(iteratingLegend['top_3'], 10) || 0;
                     }
                 });
             }
