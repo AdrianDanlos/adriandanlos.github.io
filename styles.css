@@ -53,10 +53,11 @@ section {
     display: flex;
     justify-content: center;
     align-items: center;
+    color: #1e2a3c;
 }
 
 .data{
-    color: #3b3a3c;
+    color: #545454;
 }
 
 #legend{
@@ -164,6 +165,6 @@ footer, #legend{
         font-size: 40px;
     }
     .decorator-container{
-        display:none;
+        display: none;
     }
 }
