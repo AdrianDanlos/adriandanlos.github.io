@@ -4,7 +4,7 @@ $( document ).ready(function() {
 
     //First call
     ajaxCall();
-    //Repetitive calls each 20s
+    //Repetitive calls each minute
     setInterval(()=>{
         ajaxCall();
     }, 60000); //1min
