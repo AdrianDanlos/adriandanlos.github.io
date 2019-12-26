@@ -46,6 +46,7 @@ section{
 
 .title, .data{
     width: 100%;
+    font-weight: 300;
     background-color: rgba(250,250,250,0.8);
 }
 .title{
@@ -53,12 +54,10 @@ section{
     justify-content: center;
     align-items: center;
     font-size: 4vw;
-    font-weight: 300;
 }
 
 .data{
     font-size: 5vw;
-    font-weight: 100;
 }
 
 #legend{
@@ -141,14 +140,12 @@ footer{
         right: 0;
         left:0;
     }
-    footer{
-        margin-top:20px;
-    }
     #kills{
         justify-content: flex-end;
     }
     #top3{
         justify-content: flex-start;
+        margin-bottom: 40px;
     }
     .rank-logo{
         margin-right: 0;
@@ -156,9 +153,11 @@ footer{
     .title{
         padding-top: 10px;
         font-size: 40px;
+        font-weight: 100;
     }
     .data{
         padding-bottom: 10px;
         font-size: 40px;
+        font-weight: 300;
     }
 }
