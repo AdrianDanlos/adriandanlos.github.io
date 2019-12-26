@@ -133,13 +133,16 @@ footer{
     .container section{
         justify-content: center;
         width: 50vw;
-        height: 450px;
+        height: 500px;
     }
     footer, #legend{
         justify-content: center;
         width: 100%;
         right: 0;
         left:0;
+    }
+    footer{
+        margin-top:20px;
     }
     #kills{
         justify-content: flex-end;
