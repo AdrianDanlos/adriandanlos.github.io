@@ -132,7 +132,7 @@ footer{
     .container section{
         justify-content: center;
         width: 50vw;
-        height: 550px;
+        height: 450px;
     }
     footer, #legend{
         justify-content: center;
@@ -152,11 +152,11 @@ footer{
     .title{
         padding-top: 10px;
         font-size: 40px;
-        font-weight: 100;
+        font-weight: 300;
     }
     .data{
         padding-bottom: 10px;
         font-size: 40px;
-        font-weight: 300;
+        font-weight: 100;
     }
 }
