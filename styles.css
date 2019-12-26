@@ -160,4 +160,7 @@ footer{
         font-size: 40px;
         font-weight: 300;
     }
+    .decorator{
+        display:none;
+    }
 }
