@@ -54,10 +54,12 @@ section{
     justify-content: center;
     align-items: center;
     font-size: 4vw;
+    font-weight:300
 }
 
 .data{
     font-size: 5vw;
+    font-weight:100
 }
 
 #legend{
@@ -153,12 +155,10 @@ footer{
     .title{
         padding-top: 10px;
         font-size: 40px;
-        font-weight: 100;
     }
     .data{
         padding-bottom: 10px;
         font-size: 40px;
-        font-weight: 300;
     }
     .decorator{
         display:none;
