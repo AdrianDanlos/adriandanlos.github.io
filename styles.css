@@ -1,7 +1,7 @@
 *{
     box-sizing: border-box;
 }
-body,html{
+body,html, .wrapper{
     height: 100vh;
     margin:0;
     padding:0;
@@ -17,9 +17,8 @@ html{
     background-size: cover;
 }
 
-body{
-    width: 80vw;
-    margin:0 auto;
+.wrapper{
+    position: relative;
 }
 a{
     text-decoration: none;
@@ -161,10 +160,12 @@ footer, #legend{
 
 /*Media Queries*/
 @media only screen and (max-width: 700px) {
+    html, body, .wrapper{
+        overflow: hidden;
+    }
     body{
         width: 100%;
         font-size: 12px;
-        overflow: hidden;
     }
     .container{
         flex-direction: column;

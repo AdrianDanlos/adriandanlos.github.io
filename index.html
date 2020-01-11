@@ -17,63 +17,65 @@
     <script type="text/javascript" src="dist/loading-bar.js"></script>
 </head>
 <body>
-    <div class="container">
-        <div id="legend">
-            <div id="legend-container">
-                <img id="online-logo" src="">
-                <div id="loading">
-                    <img id="loading-logo" src="img/loading.png" alt="">
-                    <span id="loading-text">Loading data from APEX server...</span>
+    <div class="wrapper">
+        <div class="container">
+            <div id="legend">
+                <div id="legend-container">
+                    <img id="online-logo" src="">
+                    <div id="loading">
+                        <img id="loading-logo" src="img/loading.png" alt="">
+                        <span id="loading-text">Loading data from APEX server...</span>
+                    </div>
+                    <span id="user-info"></span>
+                    <span id="rank"></span>
+                    <img id="current-rank-logo" class="rank-logo" src="" alt="">
+                    <div class="myBar label-center"></div>
                 </div>
-                <span id="user-info"></span>
-                <span id="rank"></span>
-                <img id="current-rank-logo" class="rank-logo" src="" alt="">
-                <div class="myBar label-center"></div>
+                <div id="rankPercentage">
+                    <span id="next-text">NEXT</span>
+                    <img id="next-rank-logo" class="rank-logo" src="http://api.apexlegendsstatus.com/assets/ranks/diamond4.png">
+                </div>
             </div>
-            <div id="rankPercentage">
-                <span id="next-text">NEXT</span>
-                <img id="next-rank-logo" class="rank-logo" src="http://api.apexlegendsstatus.com/assets/ranks/diamond4.png">
-            </div>
+            <section id="kills">
+                <div class="title">
+                    <div class="decorator-container">
+                        <div class="decorator"></div>
+                    </div>
+                    <span class="text">Kills</span>
+                    <div class="decorator-container">
+                        <div class="decorator"></div>
+                    </div>
+                </div>
+                <div class="data">...</div>
+            </section>
+            <section id="wins">
+                <div class="title">
+                    <div class="decorator-container">
+                        <div class="decorator"></div>
+                    </div>
+                    <span class="text">Wins</span>
+                    <div class="decorator-container">
+                        <div class="decorator"></div>
+                    </div>
+                </div>
+                <div class="data">...</div>
+            </section>
+            <section id="top3">
+                <div class="title">
+                    <div class="decorator-container">
+                        <div class="decorator"></div>
+                    </div>
+                    <span class="text">Top3</span>
+                    <div class="decorator-container">
+                        <div class="decorator"></div>
+                    </div>
+                </div>
+                <div class="data">...</div>
+            </section>
+            <footer>
+                <a id="api-link" target="_blank" href="https://github.com/HugoDerave/ApexLegendsAPI">Based on Apex API</a>
+            </footer>
         </div>
-        <section id="kills">
-            <div class="title">
-                <div class="decorator-container">
-                    <div class="decorator"></div>
-                </div>
-                <span class="text">Kills</span>
-                <div class="decorator-container">
-                    <div class="decorator"></div>
-                </div>
-            </div>
-            <div class="data">...</div>
-        </section>
-        <section id="wins">
-            <div class="title">
-                <div class="decorator-container">
-                    <div class="decorator"></div>
-                </div>
-                <span class="text">Wins</span>
-                <div class="decorator-container">
-                    <div class="decorator"></div>
-                </div>
-            </div>
-            <div class="data">...</div>
-        </section>
-        <section id="top3">
-            <div class="title">
-                <div class="decorator-container">
-                    <div class="decorator"></div>
-                </div>
-                <span class="text">Top3</span>
-                <div class="decorator-container">
-                    <div class="decorator"></div>
-                </div>
-            </div>
-            <div class="data">...</div>
-        </section>
-        <footer>
-            <a id="api-link" target="_blank" href="https://github.com/HugoDerave/ApexLegendsAPI">Based on Apex API</a>
-        </footer>
     </div>
 </body>
 </html>
