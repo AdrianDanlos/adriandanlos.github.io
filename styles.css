@@ -8,6 +8,11 @@ body,html, .wrapper{
     font-family: Roboto, serif;
     text-align: center;
     color: #333234;
+    overflow: hidden;
+}
+
+.wrapper{
+    position: fixed;
 }
 html{
     background-image:url("http://hdqwalls.com/wallpapers/apex-legends-season-3-ws.jpg");
@@ -160,9 +165,6 @@ footer, #legend{
 
 /*Media Queries*/
 @media only screen and (max-width: 700px) {
-    html, body, .wrapper{
-        overflow: hidden;
-    }
     body{
         width: 100%;
         font-size: 12px;
