@@ -69,7 +69,7 @@ section {
     top:20px;
     left:20px;
     height: 40px;
-    width: 95%;
+    width: 98%;
 }
 #legend-container{
     display: flex;
@@ -164,7 +164,7 @@ footer, #legend{
         height: 500px;
     }
     footer, #legend{
-        justify-content: center;
+        /*justify-content: center;*/
         width: 100%;
         right: 0;
         left:0;
@@ -181,13 +181,16 @@ footer, #legend{
     }
     .title{
         padding-top: 10px;
-        font-size: 40px;
+        font-size: 35px;
     }
     .data{
         padding-bottom: 10px;
-        font-size: 40px;
+        font-size: 35px;
     }
     .decorator-container{
         display: none;
+    }
+    #rankPercentage{
+        display: none !important;
     }
 }
