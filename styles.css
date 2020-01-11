@@ -221,7 +221,7 @@ footer, #legend{
         margin-right:30px;
     }
     #loading{
-        margin-left: 0;
+        margin-left: 10px;
     }
     #loading-text{
         white-space: nowrap;
