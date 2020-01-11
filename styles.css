@@ -16,6 +16,7 @@ html{
     background-position: center;
     background-size: cover;
 }
+
 body{
     width: 80vw;
     margin:0 auto;
@@ -63,12 +64,33 @@ section {
 #legend{
     display: flex;
     align-items: center;
+    justify-content: space-between;
     position: absolute;
     top:20px;
     left:20px;
     height: 40px;
+    width: 95%;
 }
-#user-info,.rank-logo{
+#legend-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#rankPercentage{
+    display: none;
+    align-items: center;
+}
+#next-text{
+    margin-right: 5px;
+}
+.ldBar-label{
+    margin-top: 10px;
+}
+.myBar{
+    align-self: center;
+    width: 100px;
+}
+#user-info{
     margin-right:50px;
 }
 .title .text{
@@ -86,7 +108,7 @@ section {
     background-color: #C5D58E;
 }
 .rank-logo{
-    width: 40px;
+    width: 50px;
     height: auto;
 }
 footer{
@@ -112,6 +134,7 @@ footer, #legend{
     height: auto;
     margin-right: 5px;
 }
+
 
 
 /*loading animation*/

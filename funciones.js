@@ -20,7 +20,8 @@ $( document ).ready(function() {
                 let online = isOnline(result);
                 let datosRanking = getRanking(result);
                 let datosTotales = sumarDatos(result);
-                visualizarDatos(datosTotales, datosRanking, online, "N3Essential");
+                let percentageToNextRank = calculatePercentToNextRank(result);
+                visualizarDatos(datosTotales, datosRanking, online, "N3Essential", percentageToNextRank);
                 console.log(result);
             }
         });
@@ -44,6 +45,13 @@ $( document ).ready(function() {
         let rankImg = rankObject['rankImg'];
 
         return [rankName, rankDiv, rankScore, rankImg];
+    }
+
+    function calculatePercentToNextRank(result) {
+        let totalPoints = 7200 - 4800;
+        let remainingPoints = 7200 - result[0]['global']['rank']['rankScore'];
+        let percentageToNextRank = 100 - ((remainingPoints * 100) / totalPoints);
+        return percentageToNextRank;
     }
 
     function sumarDatos(result){
@@ -93,7 +101,7 @@ $( document ).ready(function() {
         return datosTotales;
     }
 
-    function visualizarDatos(datosTotales, datosRanking, online, user) {
+    function visualizarDatos(datosTotales, datosRanking, online, user, percentageToNextRank) {
         //Date
         createDateNode();
         //User
@@ -105,7 +113,7 @@ $( document ).ready(function() {
         }
         //Ranking
         $('#rank').html(datosRanking[0] + " " + romanize(datosRanking[1]) + " " + datosRanking[2]);
-        $('.rank-logo').attr('src', datosRanking[3]);
+        $('#current-rank-logo').attr('src', datosRanking[3]);
         //Online status up
         if(online){
             $('#online-logo').attr('src', 'img/online.png');
@@ -113,6 +121,16 @@ $( document ).ready(function() {
         else{
             $('#online-logo').attr('src', 'img/offline.png');
         }
+        //Percentage left
+        let bar = new ldBar(".myBar", {
+            "stroke-width": 3,
+            "preset": "line",
+            "data-fill": "blue",
+            "value": Math.round(percentageToNextRank)
+        });
+        $('#rankPercentage').css('display', 'flex');
+        $('.baseline')[0].attr('stroke', 'black');
+
     }
 
     function romanize(number) {
