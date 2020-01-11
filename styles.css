@@ -164,7 +164,7 @@ footer, #legend{
         height: 500px;
     }
     footer, #legend{
-        /*justify-content: center;*/
+        justify-content: center;
         width: 100%;
         right: 0;
         left:0;
@@ -192,5 +192,8 @@ footer, #legend{
     }
     #rankPercentage{
         display: none !important;
+    }
+    #loading-logo{
+        margin-left: -10px;
     }
 }
