@@ -209,6 +209,15 @@ footer, #legend{
         padding: 40px 0;
     }
     #kills{
-        margin-top: 20%;
+        margin-top: 16%;
+    }
+    /*#online-logo{*/
+    /*    margin-left: 5px;*/
+    /*}*/
+    #user-info{
+        margin-right:50px;
+    }
+    #loading{
+        margin-left: 0;
     }
 }
