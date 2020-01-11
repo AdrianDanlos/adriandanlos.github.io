@@ -16,7 +16,7 @@ $( document ).ready(function() {
             contentType: "application/json",
             dataType: 'json',
             success: function(result){
-                $('#loading-logo').remove();
+                $('#loading').remove();
                 let online = isOnline(result);
                 let datosRanking = getRanking(result);
                 let datosTotales = sumarDatos(result);
@@ -124,12 +124,12 @@ $( document ).ready(function() {
         //Percentage left
         let bar = new ldBar(".myBar", {
             "stroke-width": 3,
-            "preset": "line",
+            "preset": "rainbow",
             "data-fill": "blue",
             "value": Math.round(percentageToNextRank)
         });
         $('#rankPercentage').css('display', 'flex');
-        $('.baseline')[0].attr('stroke', 'black');
+        $('.baseline')[0].attr('stroke', 'white');
 
     }
 

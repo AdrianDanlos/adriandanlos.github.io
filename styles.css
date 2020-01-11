@@ -64,12 +64,15 @@ section {
 #legend{
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     position: absolute;
-    top:20px;
-    left:20px;
+    top: 0;
+    left: 0;
     height: 40px;
-    width: 98%;
+    width: 100%;
+    background-color: rgba(1, 30, 61, 0.9);
+    color: #ececec;
+    padding: 50px 0;
 }
 #legend-container{
     display: flex;
@@ -79,12 +82,14 @@ section {
 #rankPercentage{
     display: none;
     align-items: center;
+    margin-left: 40px;
 }
 #next-text{
     margin-right: 5px;
 }
 .ldBar-label{
     margin-top: 10px;
+    text-shadow: none !important;
 }
 .myBar{
     align-self: center;
@@ -118,15 +123,22 @@ footer{
     bottom:10px;
     right:20px;
     height: 40px;
+    width: 97%;
 }
 footer, #legend{
     font-weight: 300;
 }
 #refresh-time{
     padding-right: 50px;
- }
+}
+#loading{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 150px;
+}
 #loading-logo{
-    margin-left: -40px;
+    margin-right: 5px;
 }
 
 #online-logo{
@@ -193,7 +205,10 @@ footer, #legend{
     #rankPercentage{
         display: none !important;
     }
-    #loading-logo{
-        margin-left: -10px;
+    #legend-container{
+        padding: 40px 0;
+    }
+    #kills{
+        margin-top: 20%;
     }
 }
