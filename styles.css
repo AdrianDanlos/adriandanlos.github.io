@@ -211,13 +211,16 @@ footer, #legend{
     #kills{
         margin-top: 16%;
     }
-    /*#online-logo{*/
-    /*    margin-left: 5px;*/
-    /*}*/
+    #online-logo{
+        margin-left: 5px;
+    }
     #user-info{
-        margin-right:50px;
+        margin-right:30px;
     }
     #loading{
         margin-left: 0;
+    }
+    #loading-text{
+        white-space: nowrap;
     }
 }
