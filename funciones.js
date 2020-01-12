@@ -55,7 +55,7 @@ $( document ).ready(function() {
     }
 
     function calculatePercentToNextRank(result) {
-        let totalPoints = 2400; //Gap between each rank
+        let totalPoints = 2800; //Gap between each rank
         let remainingPoints = 10000 - result[0]['global']['rank']['rankScore'];
         let percentageToNextRank = 100 - ((remainingPoints * 100) / totalPoints);
         return percentageToNextRank;
@@ -130,7 +130,7 @@ $( document ).ready(function() {
         }
         //Percentage left
         bar.set(
-            Math.round(percentageToNextRank),     /* target value. */
+            Math.floor(percentageToNextRank),     /* target value. */
             true   /* enable animation. default is true */
         );
         $('#rankPercentage').css('display', 'flex');
