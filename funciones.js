@@ -2,12 +2,19 @@ $( document ).ready(function() {
     let api = 'https://cors-anywhere.herokuapp.com/https://api.mozambiquehe.re/bridge?platform=PC&player=N3Essential,N3EssentialSmurf,EssentialReborn,spacexfanboy,asiatristanvigo,thechinesesoul,thekoreansoul,thethaisoul,thevietsoul&auth=';
     let key = 'LPuQwxrvLY7hspWf1eST';
 
+    //Instantiating loading bar
+    let bar = new ldBar(".myBar", {
+        "stroke-width": 3,
+        "preset": "rainbow",
+        "data-fill": "blue"
+    });
+
     //First call
     ajaxCall();
     //Repetitive calls each minute
     setInterval(()=>{
         ajaxCall();
-    }, 60000); //1min
+    }, 6000); //1min
 
 
     function ajaxCall(){
@@ -48,8 +55,8 @@ $( document ).ready(function() {
     }
 
     function calculatePercentToNextRank(result) {
-        let totalPoints = 7200 - 4800;
-        let remainingPoints = 7200 - result[0]['global']['rank']['rankScore'];
+        let totalPoints = 2400; //Gap between each rank
+        let remainingPoints = 10000 - result[0]['global']['rank']['rankScore'];
         let percentageToNextRank = 100 - ((remainingPoints * 100) / totalPoints);
         return percentageToNextRank;
     }
@@ -122,14 +129,14 @@ $( document ).ready(function() {
             $('#online-logo').attr('src', 'img/offline.png');
         }
         //Percentage left
-        let bar = new ldBar(".myBar", {
-            "stroke-width": 3,
-            "preset": "rainbow",
-            "data-fill": "blue",
-            "value": Math.round(percentageToNextRank)
-        });
+        bar.set(
+            Math.round(percentageToNextRank),     /* target value. */
+            true   /* enable animation. default is true */
+        );
         $('#rankPercentage').css('display', 'flex');
         $('.baseline')[0].attr('stroke', 'white');
+        $('.myBar').css('display', 'block');
+
 
     }
 

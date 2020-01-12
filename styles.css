@@ -96,6 +96,7 @@ section {
     text-shadow: none !important;
 }
 .myBar{
+    display: none;
     align-self: center;
     width: 100px;
 }
@@ -139,7 +140,7 @@ footer, #legend{
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-left: 200px;
+    margin-left: 90px;
 }
 #loading-logo{
     margin-right: 5px;
