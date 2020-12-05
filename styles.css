@@ -4,7 +4,7 @@ body, html {
     justify-content: space-around;
     margin: 0;
     padding: 0;
-    background-image: url("img/s4.jpg");
+    background-image: url("img/cyberpunk.jpg");
     background-size: cover;
     background-position: center;
     height: 100vh;
@@ -27,6 +27,8 @@ h1 {
     align-self: center;
     font-size: 80px;
     font-weight: 100;
+    padding: 20px;
+    background: radial-gradient(black, transparent);
 }
 #timer {
     display: flex;
