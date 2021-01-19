@@ -4,7 +4,7 @@ body, html {
     justify-content: space-around;
     margin: 0;
     padding: 0;
-    background-image: url("img/aot.jpg");
+    background-image: url("img/thailand.jpg");
     background-size: cover;
     background-position: center;
     height: 100vh;
@@ -28,13 +28,13 @@ h1 {
     font-size: 80px;
     font-weight: 100;
     padding: 20px;
-    background: radial-gradient(black, transparent);
+    background: rgba(0,0,0,0.2);
 }
 #timer {
     display: flex;
     justify-content: center;
     width: 100%;
-    background-color: rgba(50, 50, 25, 0.4);
+    background-color: rgba(50, 50, 25, 0.3);
     padding: 10px 0;
     /*box-shadow: 1px 3px 10px 1px white;*/
 }
