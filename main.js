@@ -12,12 +12,12 @@ if (playPromise !== null) {
 }
 setInterval(function() {
     console.log($("#rocket").position().top);
-    let dateFinal = new Date(2021, 1, 12, 20, 0, 0, 0); /*El mes a indicar es 1 mes anterior a la fecha final. Si queremos Agosto indicamos 7 (Por ser array)*/
+    let dateFinal = new Date(2021, 2, 0, 06, 0, 0, 0); /*El mes a indicar es 1 mes anterior a la fecha final. Si queremos Agosto indicamos 7 (Por ser array)*/
     if (new Date() > dateFinal) {
-        countDownOver(daysEl, 0);
+        /*countDownOver(daysEl, 0);
         countDownOver(hoursEl, 0);
         countDownOver(minutesEl, 0);
-        countDownOver(secondsEl, 0);
+        countDownOver(secondsEl, 0);*/
     } else {
         console.log(dateFinal);
         let dateNow = new Date();
