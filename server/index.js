@@ -1,29 +1,24 @@
-const express = require("express");
+//TODO: ADD LINTING
+import express from "express";
+import axios from "axios";
 
 const PORT = process.env.PORT || 3001;
-
 const app = express();
 
-const request = require("request");
-
 app.get("/api", (req, res) => {
-  //   res.json({ message: "Hello from server!" });
-  let data = "empty";
-  request(
-    "https://coinlib.io/api/v1/coinlist?key=2d5f375478a9fe88&pref=USD&page=1&order=rank_asc",
-    function (error, response, body) {
-      if (!error && response.statusCode == 200) {
-        console.log("success");
-        console.log(body);
-        return;
-      }
-      console.log("error");
-      console.log(error);
-      console.log(response.statusCode);
-      console.log(response.body);
-    }
-  );
-  res.json(data);
+  const apiKey1 = "4e32683c731192c4";
+  const apiKey2 = "2d5f375478a9fe88";
+  const apiKey3 = "98afe38fcac76e87";
+  axios({
+    url: `https://coinlib.io/api/v1/coinlist?key=${apiKey1}&pref=USD&order=rank_asc`,
+    method: "get",
+  })
+    .then((response) => {
+      res.status(200).json(response.data);
+    })
+    .catch((err) => {
+      res.status(500).json({ message: err });
+    });
 });
 
 app.listen(PORT, () => {
