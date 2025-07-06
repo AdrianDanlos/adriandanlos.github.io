@@ -315,6 +315,70 @@ body {
   }
 }
 
+@media (max-width: 480px) {
+  .title {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+  .subtitle {
+    font-size: 0.6rem;
+    margin-bottom: 1rem;
+  }
+  .countdown {
+    gap: 0.2rem;
+  }
+  .countdown-item {
+    padding: 0.3rem 0.2rem;
+    min-width: 38px;
+  }
+  .countdown-number {
+    font-size: 0.9rem;
+  }
+  .countdown-label {
+    font-size: 0.5rem;
+  }
+  .countdown-separator {
+    font-size: 0.9rem;
+  }
+  .motivation-text {
+    font-size: 0.6rem;
+    margin-bottom: 0.3rem;
+  }
+  .runners-grid {
+    gap: 0.2rem;
+  }
+  .runner-card {
+    padding: 0.2rem;
+    margin: 0 auto;
+  }
+  .runner-image {
+    width: 28px;
+    height: 28px;
+  }
+  .runner-name {
+    font-size: 0.6rem;
+  }
+  .strava-badge {
+    font-size: 0.4rem;
+  }
+  .friends-mention {
+    font-size: 0.5rem;
+  }
+  .track-image-bottom-right {
+    width: 18px;
+    right: 1vw;
+    bottom: 1vw;
+    border-radius: 2px;
+  }
+  .retro-runner {
+    width: 10px;
+    bottom: 14vw;
+  }
+  .container {
+    padding: 0 1vw;
+  }
+}
+
 .track-image-bottom-left {
   position: fixed;
   left: 1.5vw;
@@ -383,7 +447,7 @@ body {
   right: 0;
   bottom: 0;
   z-index: 0;
-  background: url('../images/background.jpg') center center / cover no-repeat;
+  background: url("../images/background.jpg") center center / cover no-repeat;
   will-change: transform;
   transition: filter 0.3s;
   pointer-events: none;
