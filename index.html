@@ -10,12 +10,11 @@
     <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
-    <div class="parallax-bg"></div>
-    <div class="parallax-overlay"></div>
     <div class="container">
         <div class="content">
             <h1 class="title">BARCELONA MARATHON 2026!</h1>
             <div class="subtitle">4 Runners. 42.195km. 1 Destiny</div>
+            <div id="total-km-combined">Total: Loading</div>
             <div class="countdown-container">
                 <div class="countdown">
                     <div class="countdown-item">
@@ -43,36 +42,35 @@
             <div class="runners-section">
                 <div class="runners-grid">
                     <a href="https://www.strava.com/athletes/21162116" target="_blank" class="runner-link">
-                        <div class="runner-card">
+                        <div id="asier-card" class="runner-card">
                             <img src="images/asier.jpg" alt="Asier" class="runner-image">
                             <div class="runner-name">Asier</div>
-                            <div class="strava-badge">Strava</div>
+                            <div class="strava-badge"><img src="images/strava.png" alt="Strava" class="strava-badge"></div>
                         </div>
                     </a>
                     <a href="https://www.strava.com/athletes/172716857" target="_blank" class="runner-link">
-                        <div class="runner-card">
+                        <div id="hodei-card" class="runner-card">
                             <img src="images/hodei.jpg" alt="Hodei" class="runner-image">
                             <div class="runner-name">Hodei</div>
-                            <div class="strava-badge">Strava</div>
+                            <div class="strava-badge"><img src="images/strava.png" alt="Strava" class="strava-badge"></div>
                         </div>
                     </a>
                     <a href="https://www.strava.com/athletes/120181216" target="_blank" class="runner-link">
-                        <div class="runner-card">
+                        <div id="joel-card" class="runner-card">
                             <img src="images/joel.jpg" alt="Joel" class="runner-image">
                             <div class="runner-name">Joel</div>
-                            <div class="strava-badge">Strava</div>
+                            <div class="strava-badge"><img src="images/strava.png" alt="Strava" class="strava-badge"></div>
                         </div>
                     </a>
                     <a href="https://www.strava.com/athletes/71606225" target="_blank" class="runner-link">
-                        <div class="runner-card">
+                        <div id="adrian-card" class="runner-card">
                             <img src="images/adrian.jpg" alt="Adrian" class="runner-image">
                             <div class="runner-name">Adrian</div>
-                            <div class="strava-badge">Strava</div>
+                            <div class="strava-badge"><img src="images/strava.png" alt="Strava" class="strava-badge"></div>
                         </div>
                     </a>
                 </div>
             </div>
-            
             <div class="motivation">
                 <div class="motivation-text">You've got this! 🚀</div>
                 <div class="friends-mention">Shoutout to the marathon squad! Let's make this epic!</div>
@@ -123,91 +121,6 @@
     <a href="https://www.zurichmaratobarcelona.es/recorrido/" target="_blank" class="track-link-bottom-right">
         <img src="images/track.PNG" alt="Marathon Track" class="track-image-bottom-right">
     </a>
-    <img src="images/8bit_runner.gif" alt="8-bit Runner" class="retro-runner">
-    <script>
-    (function() {
-      var parallax = document.querySelector('.parallax-bg');
-      if (!parallax) return;
-
-      // Mousemove parallax
-      document.addEventListener('mousemove', function(e) {
-        var x = (e.clientX / window.innerWidth - 0.5) * 20; // range: -10 to 10
-        var y = (e.clientY / window.innerHeight - 0.5) * 20;
-        parallax.style.transform = 'scale(1.05) translate(' + x + 'px,' + y + 'px)';
-      });
-
-      // Optional: Reset on mouse leave
-      document.addEventListener('mouseleave', function() {
-        parallax.style.transform = 'scale(1.05) translate(0,0)';
-      });
-
-      // Optional: Subtle blur on scroll for extra depth
-      window.addEventListener('scroll', function() {
-        var blur = Math.min(8, window.scrollY / 80);
-        parallax.style.filter = 'blur(' + blur + 'px)';
-      });
-    })();
-    </script>
-    <script>
-    // --- Countdown fade animation ---
-    function animateCountdownChange(element, newValue) {
-      if (element.textContent !== newValue) {
-        element.classList.add('countdown-fade');
-        setTimeout(() => {
-          element.textContent = newValue;
-          element.classList.remove('countdown-fade');
-        }, 150);
-      }
-    }
-
-    // --- Motivation quote crossfade ---
-    window.addEventListener('DOMContentLoaded', function() {
-      // ... existing audio/map code ...
-
-      // Motivation quote crossfade
-      const motivationalMessages = [
-        "You've got this! 🚀",
-        "Stay strong! 💪",
-        "Keep pushing! 🔥",
-        "You're unstoppable! ⚡",
-        "Dream big! 🏆",
-        "You're a champion! 🏃‍♂️"
-      ];
-      let messageIndex = 1;
-      setInterval(() => {
-        const motivationText = document.querySelector('.motivation-text');
-        if (motivationText) {
-          motivationText.classList.add('fade-out');
-          setTimeout(() => {
-            motivationText.textContent = motivationalMessages[messageIndex];
-            motivationText.classList.remove('fade-out');
-            motivationText.classList.add('fade-in');
-            setTimeout(() => motivationText.classList.remove('fade-in'), 200);
-            messageIndex = (messageIndex + 1) % motivationalMessages.length;
-          }, 200);
-        }
-      }, 3000);
-    });
-
-    // --- Countdown update (replace your current countdown update logic with this) ---
-    const targetDate = new Date('March 16, 2026 00:00:00').getTime();
-    const daysElement = document.getElementById('days');
-    const hoursElement = document.getElementById('hours');
-    const minutesElement = document.getElementById('minutes');
-    const secondsElement = document.getElementById('seconds');
-    setInterval(() => {
-      const now = new Date().getTime();
-      const distance = targetDate - now;
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-      animateCountdownChange(daysElement, days.toString().padStart(2, '0'));
-      animateCountdownChange(hoursElement, hours.toString().padStart(2, '0'));
-      animateCountdownChange(minutesElement, minutes.toString().padStart(2, '0'));
-      animateCountdownChange(secondsElement, seconds.toString().padStart(2, '0'));
-    }, 1000);
-    </script>
     <script src="scripts/main.js"></script>
 </body>
 </html> 
