@@ -132,64 +132,92 @@ function displayStravaData() {
   fetch("/api/strava")
     .then((res) => res.json())
     .then((data) => {
-      displayKmForAllRunners(`${data.totalKm} KM`, data.totalTime);
-      displayTotalKm(data.totalKm, data.totalTime);
+      displayKmForAllRunners(`${data.totalKm} KM`);
+      displayTimeForAllRunners(data.totalTime);
+      updateTotalKmCombined(data.totalKm, (data.totalTime && data.totalTime.time) ? data.totalTime.time : null);
     })
     .catch((err) => {
       console.error("Failed to fetch Strava data:", err);
       displayKmForAllRunners("Failed to load Strava data.");
-      displayTotalKm(null);
+      displayTimeForAllRunners(null);
+      updateTotalKmCombined(null, null);
     });
 }
 
-function displayKmForAllRunners(kmText, timeData) {
+function displayKmForAllRunners(kmText) {
   CARD_IDS.forEach((cardId) => {
     const card = document.getElementById(cardId);
     const loadingDiv = document.getElementById(`${cardId}-loading`);
     if (loadingDiv) loadingDiv.remove();
 
-    // Remove existing km and time divs
+    // Remove existing km div
     const existingKmDiv = document.getElementById(`${cardId}-totalKm`);
-    const existingTimeDiv = document.getElementById(`${cardId}-totalTime`);
     if (existingKmDiv) existingKmDiv.remove();
-    if (existingTimeDiv) existingTimeDiv.remove();
 
-    // Create a result area container
-    const resultArea = document.createElement("div");
-    resultArea.className = "runner-result-area";
+    // Create a result area container if not exists
+    let resultArea = card.querySelector('.runner-result-area');
+    if (!resultArea) {
+      resultArea = document.createElement('div');
+      resultArea.className = 'runner-result-area';
+      card.appendChild(resultArea);
+    }
 
     // Create km div
-    const kmDiv = document.createElement("div");
+    const kmDiv = document.createElement('div');
     kmDiv.id = `${cardId}-totalKm`;
     kmDiv.textContent = kmText;
     resultArea.appendChild(kmDiv);
-
-    // Create time div if time data exists
-    if (timeData && timeData.time) {
-      const timeDiv = document.createElement("div");
-      timeDiv.id = `${cardId}-totalTime`;
-      timeDiv.className = "runner-time";
-      timeDiv.textContent = timeData.time;
-      resultArea.appendChild(timeDiv);
-    }
-
-    card.appendChild(resultArea);
   });
 }
 
-function displayTotalKm(totalKm, totalTime) {
+function displayTimeForAllRunners(timeData) {
+  CARD_IDS.forEach((cardId) => {
+    const card = document.getElementById(cardId);
+    // Remove existing time div
+    const existingTimeDiv = document.getElementById(`${cardId}-totalTime`);
+    if (existingTimeDiv) existingTimeDiv.remove();
+
+    // Find or create result area
+    let resultArea = card.querySelector('.runner-result-area');
+    if (!resultArea) {
+      resultArea = document.createElement('div');
+      resultArea.className = 'runner-result-area';
+      card.appendChild(resultArea);
+    }
+
+    // Determine the time to display for this runner
+    let timeText = '';
+    if (timeData && typeof timeData === 'object' && !Array.isArray(timeData)) {
+      // If timeData is an object with per-runner times
+      if (timeData[cardId]) {
+        timeText = timeData[cardId];
+      } else if (timeData.time) {
+        // fallback to .time property if present
+        timeText = timeData.time;
+      }
+    } else if (typeof timeData === 'string') {
+      timeText = timeData;
+    }
+
+    // Create time div if time text exists
+    if (timeText) {
+      const timeDiv = document.createElement('div');
+      timeDiv.id = `${cardId}-totalTime`;
+      timeDiv.className = 'runner-time';
+      timeDiv.textContent = timeText;
+      resultArea.appendChild(timeDiv);
+    }
+  });
+}
+
+function updateTotalKmCombined(totalKm, totalTime) {
   const totalDiv = document.getElementById("total-km-combined");
-
-  // Clear existing content
-  totalDiv.innerHTML = "";
-
-  if (totalKm !== null && totalTime && totalTime.time) {
-    // Create combined display
-    const combinedDiv = document.createElement("div");
-    combinedDiv.className = "total-combined";
-    combinedDiv.innerHTML = `<span class="total-distance">${totalKm} KM</span> <span class="total-time">${totalTime.time}</span>`;
-
-    totalDiv.appendChild(combinedDiv);
+  if (totalKm !== undefined && totalKm !== null && totalKm !== "") {
+    let html = `<span class="total-distance">${totalKm} KM</span>`;
+    if (totalTime && totalTime !== "") {
+      html += ` <span class="total-time">${totalTime}</span>`;
+    }
+    totalDiv.innerHTML = html;
   } else {
     totalDiv.textContent = "Total: Unknown";
   }
