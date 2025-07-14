@@ -502,9 +502,9 @@ body,
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 330px;
-  min-width: 330px;
-  max-width: 330px;
+  width: 370px;
+  min-width: 370px;
+  max-width: 370px;
   transition: box-shadow 0.2s;
 }
 

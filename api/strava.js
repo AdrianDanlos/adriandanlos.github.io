@@ -64,7 +64,8 @@ export default async function handler(req, res) {
 
       // Fetch your latest activities
       const activitiesRes = await fetch(
-        "https://www.strava.com/api/v3/athlete/activities?per_page=5",
+        //TODO: If you want to fetch more than 200 activities, you can use the page parameter to paginate through results
+        "https://www.strava.com/api/v3/athlete/activities?per_page=200",
         { headers: { Authorization: `Bearer ${access_token}` } }
       );
 
@@ -96,7 +97,7 @@ export default async function handler(req, res) {
   const results = await Promise.all(athletePromises);
 
   // Filter out null results (failed requests)
-  const activities = results.filter(result => result !== null);
+  const activities = results.filter((result) => result !== null);
 
   res.status(200).json({
     activities,

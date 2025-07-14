@@ -231,6 +231,9 @@ function updateTotalKmCombined(activities) {
     totalMinutes += parseInt(hours) * 60 + parseInt(minutes);
   });
 
+  // Round to two decimal places
+  totalKm = Math.round(totalKm * 100) / 100;
+
   // Convert back to hours and minutes
   const totalHours = Math.floor(totalMinutes / 60);
   const remainingMinutes = totalMinutes % 60;
