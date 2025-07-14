@@ -11,14 +11,6 @@ body {
   width: 100vw;
 }
 
-@media (max-width: 768px) {
-  body {
-    overflow-y: auto;
-    height: auto;
-    min-height: 100vh;
-  }
-}
-
 .container {
   height: 100vh;
   width: 100vw;
@@ -31,14 +23,6 @@ body {
   align-items: center;
   justify-content: center;
   position: relative;
-}
-
-@media (max-width: 768px) {
-  .container {
-    height: auto;
-    min-height: 100vh;
-    padding: 2rem 0;
-  }
 }
 
 .content {
@@ -245,197 +229,6 @@ body {
   }
 }
 
-/* Responsive design */
-@media (max-width: 768px) {
-  .title {
-    font-size: 2rem;
-    margin-top: 2rem;
-  }
-  .subtitle {
-    font-size: 0.95rem;
-    margin-bottom: 2rem;
-  }
-  .countdown {
-    gap: 0.4rem;
-  }
-  .countdown-item {
-    width: 80px;
-    height: 80px;
-    min-width: 0;
-    padding: 0;
-  }
-  .countdown-number {
-    font-size: 1.3rem;
-  }
-  .countdown-label {
-    font-size: 0.7rem;
-  }
-  .countdown-separator {
-    font-size: 1.3rem;
-  }
-  .motivation-text {
-    font-size: 1rem;
-  }
-  .runners-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    align-items: stretch;
-    justify-items: stretch;
-  }
-  .runner-card {
-    min-width: 150px;
-    min-height: 150px;
-    width: auto;
-    height: auto;
-    aspect-ratio: 1 / 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    box-sizing: border-box;
-  }
-  .runner-image {
-    width: 100px;
-    height: 100px;
-    margin-top: 0;
-  }
-  .strava-badge {
-    font-size: 0;
-    line-height: 0;
-    margin-top: 0.3rem;
-  }
-  .strava-badge img {
-    width: 60px;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-  }
-  .friends-mention {
-    font-size: 0.9rem;
-  }
-  .track-image-bottom-right {
-    width: 40px;
-    right: 2vw;
-    bottom: 2vw;
-    border-radius: 4px;
-  }
-  .track-image-bottom-right:hover {
-    transform: scale(1.08) translate(-5%, -5%);
-  }
-  .retro-runner {
-    width: 28px;
-    bottom: 10vw;
-  }
-  .container {
-    padding: 0 2vw;
-    min-width: 0;
-  }
-}
-
-@media (max-width: 400px) {
-  .title {
-    font-size: 1.2rem;
-  }
-  .subtitle {
-    font-size: 0.7rem;
-  }
-  .motivation-text {
-    font-size: 0.7rem;
-  }
-  .runner-image {
-    width: 40px;
-    height: 40px;
-  }
-  .retro-runner {
-    width: 18px;
-    bottom: 12vw;
-  }
-}
-
-@media (max-width: 480px) {
-  .title {
-    font-size: 2.2rem;
-    margin-bottom: 0.5rem;
-  }
-  .subtitle {
-    font-size: 0.6rem;
-    margin-bottom: 1rem;
-  }
-  .countdown {
-    gap: 0.2rem;
-  }
-  .countdown-item {
-    width: 54px;
-    height: 54px;
-    min-width: 0;
-    padding: 0;
-  }
-  .countdown-number {
-    font-size: 0.9rem;
-  }
-  .countdown-label {
-    font-size: 0.5rem;
-  }
-  .countdown-separator {
-    font-size: 0.9rem;
-  }
-  .motivation-text {
-    font-size: 0.6rem;
-    margin-bottom: 0.3rem;
-  }
-  .runners-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    align-items: stretch;
-    justify-items: stretch;
-  }
-  .runner-card {
-    min-width: 110px;
-    min-height: 110px;
-    width: auto;
-    height: auto;
-    aspect-ratio: 1 / 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  .runner-image {
-    width: 70px;
-    height: 70px;
-    margin-top: 0;
-  }
-  .strava-badge {
-    font-size: 0;
-    line-height: 0;
-    margin-top: 0.3rem;
-  }
-  .strava-badge img {
-    width: 40px;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-  }
-  .friends-mention {
-    font-size: 0.5rem;
-  }
-  .track-image-bottom-right {
-    width: 18px;
-    right: 1vw;
-    bottom: 1vw;
-    border-radius: 2px;
-  }
-  .retro-runner {
-    width: 10px;
-    bottom: 14vw;
-  }
-  .container {
-    padding: 0 1vw;
-  }
-}
-
 .track-image-bottom-right {
   position: fixed;
   right: 1.5vw;
@@ -462,18 +255,6 @@ body {
   pointer-events: auto;
 }
 
-@media (max-width: 600px) {
-  .track-image-bottom-right {
-    width: 60px;
-    right: 2vw;
-    bottom: 2vw;
-    border-radius: 5px;
-  }
-  .track-image-bottom-right:hover {
-    transform: scale(1.18) translate(-8%, -8%);
-  }
-}
-
 body,
 .container {
   position: relative;
@@ -495,7 +276,7 @@ body,
   border: 2px solid #fff;
   border-radius: 6px;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
-  padding: 0.5em 2em;
+  padding: 0.5em;
   margin: 2rem auto 2rem auto;
   text-align: center;
   letter-spacing: 0.08em;
@@ -503,7 +284,6 @@ body,
   align-items: center;
   justify-content: center;
   width: 370px;
-  min-width: 370px;
   max-width: 370px;
   transition: box-shadow 0.2s;
 }
@@ -552,21 +332,6 @@ body,
   margin-top: 0.3em;
 }
 
-@media (max-width: 768px) {
-  .runner-result-area {
-    padding-bottom: 1.2em;
-  }
-  .runner-image {
-    margin-top: 0.7em;
-  }
-}
-
-@media (max-width: 768px) {
-  .strava-badge {
-    display: none !important;
-  }
-}
-
 .content > #total-km-combined,
 .content > .countdown-container,
 .content > .runners-section {
@@ -574,4 +339,110 @@ body,
 }
 .content > .runners-section {
   margin-bottom: 0;
+}
+
+/* PHONE (max-width: 600px) */
+@media (max-width: 600px) {
+  body {
+    overflow-y: auto;
+    height: auto;
+    min-height: 100vh;
+  }
+  .container {
+    height: auto;
+    min-height: 100vh;
+    padding: 2rem 0;
+  }
+  .strava-badge {
+    display: none !important;
+  }
+  .runner-result-area {
+    padding-bottom: 1.2em;
+  }
+  .runner-image {
+    margin-top: 0.7em;
+    width: 70px;
+    height: 70px;
+  }
+  .title {
+    font-size: 2.2rem;
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+  }
+  .subtitle {
+    font-size: 0.7rem;
+    margin-bottom: 1rem;
+  }
+  .countdown {
+    gap: 0.2rem;
+  }
+  .countdown-item {
+    width: 54px;
+    height: 54px;
+    min-width: 0;
+    padding: 0;
+  }
+  .countdown-number {
+    font-size: 0.9rem;
+  }
+  .countdown-label {
+    font-size: 0.5rem;
+  }
+  .countdown-separator {
+    font-size: 0.9rem;
+  }
+  .motivation-text {
+    font-size: 0.6rem;
+    margin-bottom: 0.3rem;
+  }
+  .runners-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    align-items: stretch;
+    justify-items: stretch;
+  }
+  .runner-card {
+    min-width: 110px;
+    min-height: 110px;
+    width: auto;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+  .strava-badge {
+    font-size: 0;
+    line-height: 0;
+    margin-top: 0.3rem;
+  }
+  .strava-badge img {
+    width: 40px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+  .friends-mention {
+    font-size: 0.5rem;
+  }
+  .track-image-bottom-right {
+    width: 18px;
+    right: 1vw;
+    bottom: 1vw;
+    border-radius: 2px;
+  }
+  .retro-runner {
+    width: 10px;
+    bottom: 14vw;
+  }
+  .container {
+    padding: 0 1vw;
+    min-width: 0;
+  }
+  #total-km-combined{
+    width: 90%;
+  }
 }
