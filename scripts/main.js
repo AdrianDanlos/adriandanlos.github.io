@@ -1,6 +1,6 @@
 // Configuration
 const TARGET_DATE = new Date("March 16, 2026 00:00:00").getTime();
-const CARD_IDS = ["adrian-card", "asier-card", "hodei-card", "joel-card"];
+const CARD_IDS = ["adrian", "asier", "hodei", "joel"];
 const MOTIVATIONAL_MESSAGES = [
   "You've got this! 🚀",
   "Stay strong! 💪",
@@ -131,96 +131,113 @@ function displayStravaData() {
   // Fetch Strava data
   fetch("/api/strava")
     .then((res) => res.json())
-    .then((data) => {
-      displayKmForAllRunners(`${data.totalKm} KM`);
-      displayTimeForAllRunners(data.totalTime);
-      updateTotalKmCombined(data.totalKm, (data.totalTime && data.totalTime.time) ? data.totalTime.time : null);
+    .then(({ activities }) => {
+      activities.forEach((runnerData) => {
+        const cardId = Object.keys(runnerData)[0];
+        displayKmForAllRunners(
+          cardId,
+          `${Object.values(runnerData)[0].totalKm} KM`
+        );
+        displayTimeForAllRunners(
+          cardId,
+          Object.values(runnerData)[0].totalTime
+        );
+      });
+
+      updateTotalKmCombined(activities);
     })
     .catch((err) => {
       console.error("Failed to fetch Strava data:", err);
-      displayKmForAllRunners("Failed to load Strava data.");
-      displayTimeForAllRunners(null);
-      updateTotalKmCombined(null, null);
     });
 }
 
-function displayKmForAllRunners(kmText) {
-  CARD_IDS.forEach((cardId) => {
-    const card = document.getElementById(cardId);
-    const loadingDiv = document.getElementById(`${cardId}-loading`);
-    if (loadingDiv) loadingDiv.remove();
+function displayKmForAllRunners(cardId, kmText) {
+  const card = document.getElementById(cardId);
+  const loadingDiv = document.getElementById(`${cardId}-loading`);
+  if (loadingDiv) loadingDiv.remove();
 
-    // Remove existing km div
-    const existingKmDiv = document.getElementById(`${cardId}-totalKm`);
-    if (existingKmDiv) existingKmDiv.remove();
+  // Remove existing km div
+  const existingKmDiv = document.getElementById(`${cardId}-totalKm`);
+  if (existingKmDiv) existingKmDiv.remove();
 
-    // Create a result area container if not exists
-    let resultArea = card.querySelector('.runner-result-area');
-    if (!resultArea) {
-      resultArea = document.createElement('div');
-      resultArea.className = 'runner-result-area';
-      card.appendChild(resultArea);
-    }
-
-    // Create km div
-    const kmDiv = document.createElement('div');
-    kmDiv.id = `${cardId}-totalKm`;
-    kmDiv.textContent = kmText;
-    resultArea.appendChild(kmDiv);
-  });
-}
-
-function displayTimeForAllRunners(timeData) {
-  CARD_IDS.forEach((cardId) => {
-    const card = document.getElementById(cardId);
-    // Remove existing time div
-    const existingTimeDiv = document.getElementById(`${cardId}-totalTime`);
-    if (existingTimeDiv) existingTimeDiv.remove();
-
-    // Find or create result area
-    let resultArea = card.querySelector('.runner-result-area');
-    if (!resultArea) {
-      resultArea = document.createElement('div');
-      resultArea.className = 'runner-result-area';
-      card.appendChild(resultArea);
-    }
-
-    // Determine the time to display for this runner
-    let timeText = '';
-    if (timeData && typeof timeData === 'object' && !Array.isArray(timeData)) {
-      // If timeData is an object with per-runner times
-      if (timeData[cardId]) {
-        timeText = timeData[cardId];
-      } else if (timeData.time) {
-        // fallback to .time property if present
-        timeText = timeData.time;
-      }
-    } else if (typeof timeData === 'string') {
-      timeText = timeData;
-    }
-
-    // Create time div if time text exists
-    if (timeText) {
-      const timeDiv = document.createElement('div');
-      timeDiv.id = `${cardId}-totalTime`;
-      timeDiv.className = 'runner-time';
-      timeDiv.textContent = timeText;
-      resultArea.appendChild(timeDiv);
-    }
-  });
-}
-
-function updateTotalKmCombined(totalKm, totalTime) {
-  const totalDiv = document.getElementById("total-km-combined");
-  if (totalKm !== undefined && totalKm !== null && totalKm !== "") {
-    let html = `<span class="total-distance">${totalKm} KM</span>`;
-    if (totalTime && totalTime !== "") {
-      html += ` <span class="total-time">${totalTime}</span>`;
-    }
-    totalDiv.innerHTML = html;
-  } else {
-    totalDiv.textContent = "Total: Unknown";
+  // Create a result area container if not exists
+  let resultArea = card.querySelector(".runner-result-area");
+  if (!resultArea) {
+    resultArea = document.createElement("div");
+    resultArea.className = "runner-result-area";
+    card.appendChild(resultArea);
   }
+
+  // Create km div
+  const kmDiv = document.createElement("div");
+  kmDiv.id = `${cardId}-totalKm`;
+  kmDiv.textContent = kmText;
+  resultArea.appendChild(kmDiv);
+}
+
+function displayTimeForAllRunners(cardId, timeData) {
+  const card = document.getElementById(cardId);
+  // Remove existing time div
+  const existingTimeDiv = document.getElementById(`${cardId}-totalTime`);
+  if (existingTimeDiv) existingTimeDiv.remove();
+
+  // Find or create result area
+  let resultArea = card.querySelector(".runner-result-area");
+  if (!resultArea) {
+    resultArea = document.createElement("div");
+    resultArea.className = "runner-result-area";
+    card.appendChild(resultArea);
+  }
+
+  // Determine the time to display for this runner
+  let timeText = "";
+  if (timeData && typeof timeData === "object" && !Array.isArray(timeData)) {
+    // If timeData is an object with per-runner times
+    if (timeData[cardId]) {
+      timeText = timeData[cardId];
+    } else if (timeData.time) {
+      // fallback to .time property if present
+      timeText = timeData.time;
+    }
+  } else if (typeof timeData === "string") {
+    timeText = timeData;
+  }
+
+  // Create time div if time text exists
+  if (timeText) {
+    const timeDiv = document.createElement("div");
+    timeDiv.id = `${cardId}-totalTime`;
+    timeDiv.className = "runner-time";
+    timeDiv.textContent = timeText;
+    resultArea.appendChild(timeDiv);
+  }
+}
+
+function updateTotalKmCombined(activities) {
+  // Sum up all totalKm and totalTime from your array
+  let totalKm = 0;
+  let totalMinutes = 0;
+
+  activities.forEach((item) => {
+    const person = Object.values(item)[0]; // Get the person data
+
+    // Add up kilometers
+    totalKm += person.totalKm;
+
+    // Add up time (convert to minutes)
+    const timeStr = person.totalTime.time;
+    const hours = (timeStr.match(/(\d+)h/) || [0, 0])[1];
+    const minutes = (timeStr.match(/(\d+)m/) || [0, 0])[1];
+    totalMinutes += parseInt(hours) * 60 + parseInt(minutes);
+  });
+
+  // Convert back to hours and minutes
+  const totalHours = Math.floor(totalMinutes / 60);
+  const remainingMinutes = totalMinutes % 60;
+  const totalTime = `${totalHours}h ${remainingMinutes}m`;
+
+  const totalDiv = document.getElementById("total-km-combined");
+  totalDiv.innerHTML = `<span class="total-distance">${totalKm} KM</span> <span class="total-time">${totalTime}</span>`;
 }
 
 // Initialize everything
